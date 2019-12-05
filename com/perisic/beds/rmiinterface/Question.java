@@ -13,18 +13,24 @@ public class Question implements Serializable {
 
 	private static final long serialVersionUID = -7273230871957691871L;
 	private String[] answers;
+	private String answerType;
 	private String questionText;
 	private Hashtable<String, Integer> frequencies = new Hashtable<String, Integer>();
 
 	// Integer>();
-	public Question(String questionText, String[] answers) {
+	public Question(String questionText,String answerType, String[] answers) {
 		super();
 		this.answers = answers;
 		this.questionText = questionText;
+		this.answerType = answerType;
 	}
 
 	public String getQuestionText() {
 		return questionText;
+	}
+	
+	public String getAnswerType() {
+		return answerType;
 	}
 
 	public String[] getAnswers() {
@@ -108,6 +114,6 @@ public class Question implements Serializable {
  */
 class QuestService {
 	public static void main(String[] args) {
-
+		
 	}
 }

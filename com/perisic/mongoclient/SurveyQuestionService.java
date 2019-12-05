@@ -41,7 +41,7 @@ public class SurveyQuestionService {
             MongoCollection<org.bson.Document> collection = database.getCollection(collectionName);
             FindIterable<org.bson.Document> cus = collection.find();
             for (org.bson.Document a : cus.collation(null)) {
-                questionDoc.add(new Document("Question", a.get("description")).append("Answer", a.get("ques_type")));
+                questionDoc.add(new Document("Question", a.get("description")).append("Answer_Type", a.get("ques_type_code")).append("Answer", a.get("ques_type")));
             }
             return questionDoc;
 

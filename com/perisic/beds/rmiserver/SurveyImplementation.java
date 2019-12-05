@@ -31,7 +31,7 @@ public class SurveyImplementation extends UnicastRemoteObject implements RemoteQ
             quesOptions = (List<String>) a.get("Answer");
             String[] answers = new String[quesOptions.size()];
             answers = quesOptions.toArray(answers);
-            myQuestions.add(new Question((String) a.get("Question"), answers));
+            myQuestions.add(new Question((String) a.get("Question"),(String) a.get("Answer_Type"), answers));
         }
     }
 
