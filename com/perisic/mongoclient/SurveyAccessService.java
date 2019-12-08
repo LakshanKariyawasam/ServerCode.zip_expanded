@@ -42,7 +42,7 @@ public class SurveyAccessService {
         }
     }
 
-    public int createPaneUser(final String currntUserName, final String usrname, final String pswd,
+    public Integer createPaneUser(String currntUserName, String usrname, String pswd,
             final boolean isSuper) {
         try {
             final byte[] salt = new byte[0];
@@ -84,4 +84,24 @@ public class SurveyAccessService {
         return 0;
     }
 
+//    public ArrayList<Document> getBasicUsers() {
+//        ArrayList<Document> userDoc = null;
+//        try {
+//            MongoConnector dbo = new MongoConnector();
+//            MongoDatabase database = dbo.getConnection();
+//            userDoc = new ArrayList<Document>();
+//            MongoCollection<org.bson.Document> collection = database.getCollection(collectionName);
+//            FindIterable<org.bson.Document> cus = collection.find();
+//            for (org.bson.Document a : cus.collation(null)) {
+//            	userDoc.add(new Document("User_Name", a.get("username")).append("Answer_Type", a.get("ques_type_code")).append("Question_Status", a.get("basic")).append("Answer", a.get("ques_type")));
+//            }
+//            return userDoc;
+//
+//        } catch (Exception ex) {
+//            System.out.println(ex);
+//            return userDoc;
+//        } finally {
+//
+//        }
+//    }
 }

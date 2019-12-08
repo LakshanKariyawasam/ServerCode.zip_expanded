@@ -15,14 +15,18 @@ public class Question implements Serializable {
 	private String[] answers;
 	private String answerType;
 	private String questionText;
+	private Integer questionId;
+	private Boolean questionStatus;
 	private Hashtable<String, Integer> frequencies = new Hashtable<String, Integer>();
 
 	// Integer>();
-	public Question(String questionText,String answerType, String[] answers) {
+	public Question(String questionText,String answerType,Integer questionId,Boolean questionStatus, String[] answers) {
 		super();
 		this.answers = answers;
 		this.questionText = questionText;
 		this.answerType = answerType;
+		this.questionId = questionId;
+		this.questionStatus = questionStatus;
 	}
 
 	public String getQuestionText() {
@@ -33,6 +37,14 @@ public class Question implements Serializable {
 		return answerType;
 	}
 
+	public Integer getQuestionId() {
+		return questionId;
+	}
+	
+	public Boolean getQuestionStatus() {
+		return questionStatus;
+	}
+	
 	public String[] getAnswers() {
 		return answers;
 	}
@@ -52,13 +64,15 @@ public class Question implements Serializable {
 		aswr.addToAnswerPane(answer, 1, 1);
 	}
 
-	public void addQuestionToSurvey(String questionDesc, String option) {
+	public static Integer addQuestionToSurvey(String questionDesc, String option, Boolean status) {
 
 		List<String[]> optionList = new ArrayList<>();
 		ArrayList<String> optionCodeList = new ArrayList<String>();
 		ArrayList<String> questionList = new ArrayList<String>();
+		ArrayList<Boolean> statusList = new ArrayList<Boolean>();
 		PublicEnum opt_ = null;
 		String enumString = null;
+		Integer val;
 		switch (Option.valueOf(option)) {
 		case RANGE:
 			opt_ = PublicEnum.RANGE;
@@ -96,16 +110,18 @@ public class Question implements Serializable {
 
 		if (opt_ != null && questionDesc != null) {
 			questionList.add(questionDesc);
+			statusList.add(status);
 			optionList.add(opt_.getOption());
 			optionCodeList.add(enumString);
 		}
 		try {
 			SurveyQuestionService svy = new SurveyQuestionService();
-			svy.addToQuestionPane(questionList, optionList,optionCodeList);
-
+			val = svy.addToQuestionPane(questionList, optionList,optionCodeList,statusList);
+			return val;
 		} catch (Exception ex) {
 			System.out.println(ex);
 		}
+		return 0;
 	}
 }
 

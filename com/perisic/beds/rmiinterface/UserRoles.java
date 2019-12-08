@@ -30,7 +30,16 @@ public class UserRoles implements Serializable {
                 return true;
             }
         }
-        return true;
+        return false;
+    }
+    
+    public Integer createPaneUser(String currntUserName, String usrname, String pswd, boolean isSuper) {
+        SurveyAccessService userInfo = new SurveyAccessService();
+
+        int val = userInfo.createPaneUser(currntUserName, usrname, pswd, isSuper);
+        
+        return val;
+
     }
 
 }

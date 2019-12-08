@@ -31,7 +31,7 @@ public class SurveyImplementation extends UnicastRemoteObject implements RemoteQ
             quesOptions = (List<String>) a.get("Answer");
             String[] answers = new String[quesOptions.size()];
             answers = quesOptions.toArray(answers);
-            myQuestions.add(new Question((String) a.get("Question"),(String) a.get("Answer_Type"), answers));
+            myQuestions.add(new Question((String) a.get("Question"),(String) a.get("Answer_Type"),(Integer) a.get("Question_ID"),(Boolean) a.get("Question_Status"), answers));
         }
     }
 
@@ -51,6 +51,16 @@ public class SurveyImplementation extends UnicastRemoteObject implements RemoteQ
     }
     
     @Override
+	public Integer updateQuestionPane(String description, int quesId, Boolean status) throws RemoteException {
+    	return SurveyQuestionService.updateQuestionPane(description,quesId,status) ;
+    }
+    
+    @Override
+    public Integer addQuestionToSurvey(String questionDesc, String option, Boolean status) throws RemoteException {
+    	return Question.addQuestionToSurvey(questionDesc,option,status) ;
+    }
+    
+    @Override
     public Vector<Question> getData() {
     return myQuestions;
     }
@@ -62,6 +72,11 @@ public class SurveyImplementation extends UnicastRemoteObject implements RemoteQ
     public boolean getSurveyAccess( String username, String pass){
         return surveyUserRoles.generateUserLogin(username, pass);
     }
+
+	@Override
+	public Integer createPaneUser(String currntUserName, String usrname, String pswd, boolean isSuper) {
+		return surveyUserRoles.createPaneUser(currntUserName, usrname, pswd, isSuper);
+	}
 
 }
 
