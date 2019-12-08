@@ -106,6 +106,11 @@ public class Question implements Serializable {
 			opt_ = PublicEnum.LOGICAL;
 			enumString = "LOGICAL";
 			break;
+			
+		case RATING:
+			opt_ = PublicEnum.RATING;
+			enumString = "RATING";
+			break;
 		}
 
 		if (opt_ != null && questionDesc != null) {

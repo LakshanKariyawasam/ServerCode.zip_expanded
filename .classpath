@@ -3,6 +3,5 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path=""/>
 	<classpathentry kind="lib" path="assets/mongo-java-driver-3.11.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/admin/Documents/GitHub/ServerCode.zip_expanded/assets/mongo-java-driver-3.11.0.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
