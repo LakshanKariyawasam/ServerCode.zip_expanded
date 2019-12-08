@@ -77,13 +77,13 @@ public interface RemoteQuestions extends Remote {
 	 */
 	Integer addQuestionToSurvey(String questionDesc, String option, Boolean status) throws RemoteException;
 
-	/**
-	 * @param currntUserName
-	 * @param usrname
-	 * @param pswd
-	 * @param isSuper
-	 * @return
-	 */
-	Integer createPaneUser(String currntUserName, String usrname, String pswd, boolean isSuper);
+//	/**
+//	 * @param currntUserName
+//	 * @param usrname
+//	 * @param pswd
+//	 * @param isSuper
+//	 * @return
+//	 */
+	Integer createPaneUser(String currntUserName, String usrname, String pswd, boolean isSuper) throws RemoteException;
 
 }
